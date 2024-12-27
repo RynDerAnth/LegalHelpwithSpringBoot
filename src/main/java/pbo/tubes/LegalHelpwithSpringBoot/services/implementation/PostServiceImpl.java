@@ -36,7 +36,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDTO> findAllEvents() {
+    public List<PostDTO> findAllPosts() {
         List<Post> posts = postRepository.findAll();
         return posts.stream().map(post -> mapToPostDTO(post)).collect(Collectors.toList());
     }
@@ -44,6 +44,12 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostDTO> postByPenulis(Pengguna pengguna) {
         List<Post> posts = postRepository.findByPenulis(pengguna);
+        return posts.stream().map(post -> mapToPostDTO(post)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PostDTO> findRecentPosts() {
+        List<Post> posts = postRepository.findLatestPosts();
         return posts.stream().map(post -> mapToPostDTO(post)).collect(Collectors.toList());
     }
 

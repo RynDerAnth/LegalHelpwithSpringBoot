@@ -10,8 +10,8 @@ import pbo.tubes.LegalHelpwithSpringBoot.models.Konsultan;
 
 public interface KonsultanRepository extends JpaRepository<Konsultan, Long> {
     Optional<Konsultan> findByNama(String url);
-    @Query("SELECT c from Konsultan c WHERE c.nama LIKE CONCAT('%', :query, '%')")
+    @Query("SELECT c FROM Konsultan c WHERE c.nama LIKE CONCAT('%', :query, '%')")
     List<Konsultan> searchKonsultan(String query);
-    @Query("SELECT c from Konsultan c ORDER BY c.harga DESC LIMIT 3")
+    @Query("SELECT c FROM Konsultan c ORDER BY c.harga DESC LIMIT 3")
     List<Konsultan> topKonsultan();
 }
